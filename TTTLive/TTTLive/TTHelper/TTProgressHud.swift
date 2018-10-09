@@ -9,7 +9,9 @@ private let TThudHideDelay: TimeInterval = 1
 private let TTHudTitleFontSize: CGFloat = 16
 
 class TTProgressHud: UIView {
-    
+    deinit {
+        print("--------1234--------")
+    }
     private var showView: UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)

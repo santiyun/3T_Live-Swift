@@ -30,8 +30,66 @@ extension TTTRtcVideoProfile {
         default:
             size = CGSize(width: 640, height: 360)
         }
-        let swapWH = UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)
-        return swapWH ? CGSize(width: size.height, height: size.width) : size
+        return size
+    }
+    
+    func bitrate() -> Int {
+        switch self {
+        case ._VideoProfile_120P:
+            return 65
+        case ._VideoProfile_180P:
+            return 140
+        case ._VideoProfile_240P:
+            return 200
+        case ._VideoProfile_480P:
+            return 500
+        case ._VideoProfile_720P:
+            return 1130
+        case ._VideoProfile_1080P:
+            return 2080
+        default:
+            return 400
+        }
+    }
+}
+
+extension TTTRtcVideoProfile {
+    func getBitRate() -> String {
+        switch self {
+        case ._VideoProfile_120P:
+            return "65"
+        case ._VideoProfile_180P:
+            return "140"
+        case ._VideoProfile_240P:
+            return "200"
+        case ._VideoProfile_480P:
+            return "500"
+        case ._VideoProfile_720P:
+            return "1130"
+        case ._VideoProfile_1080P:
+            return "2080"
+        default:
+            return "400"
+        }
+    }
+    
+    func getSizeString() -> String {
+        switch self {
+        case ._VideoProfile_120P:
+            return "160X120"
+        case ._VideoProfile_180P:
+            return "320X180"
+        case ._VideoProfile_240P:
+            return "320x240"
+        case ._VideoProfile_480P:
+            return "640x480"
+        case ._VideoProfile_720P:
+            return "1280x720"
+        case ._VideoProfile_1080P:
+            return "1920x1080"
+        default:
+            return "640x360"
+        }
     }
 }
 
@@ -41,18 +99,22 @@ class TTTRtcManager: NSObject {
     public var rtcEngine: TTTRtcEngineKit!
     public var roomID: Int64 = 0
     public let me = TTTUser(0)
-    public var customCdn = false
-    public var videoMixSize = CGSize(width: 360, height: 640)
-    public var cdn = (fps: 15, h265: false, videoBitRate: 200, channels: true)
+    
+    //--setting
+    public var isCustom = false
+    //--local
+    public var isHighQualityAudio = false
+    public var localProfile = TTTRtcVideoProfile._VideoProfile_Default
+    public var localCustomProfile = (isCustom: false, videoSize: CGSize.zero, bitrate: 0, fps: 0)
+    //--cdn
+    var h265 = false
+    var doubleChannel = false
+    public var cdnProfile = TTTRtcVideoProfile._VideoProfile_Default
+    public var cdnCustom = (isCustom: false, videoSize: CGSize.zero, bitrate: 0, fps: 0)
+    
     private override init() {
         super.init()
         rtcEngine = TTTRtcEngineKit.sharedEngine(withAppId: "a967ac491e3acf92eed5e1b5ba641ab7", delegate: nil)
-    }
-    
-    public func originCdn() {
-        customCdn = false
-        videoMixSize = CGSize(width: 360, height: 640)
-        cdn = (15,false,200,true)
     }
 }
 

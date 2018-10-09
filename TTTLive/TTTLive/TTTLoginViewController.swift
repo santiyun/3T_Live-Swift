@@ -19,13 +19,6 @@ class TTTLoginViewController: UIViewController {
     @IBOutlet private weak var roomIDTF: UITextField!
     @IBOutlet private weak var websiteLabel: UILabel!
     @IBOutlet private weak var cdnBtn: UIButton!
-    private lazy var cdnVC: TTTCdnViewController = {
-        let cdn = TTTCdnViewController()
-        cdn.view.isHidden = true
-        cdn.view.frame = view.bounds
-        view.addSubview(cdn.view)
-        return cdn
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,38 +64,73 @@ class TTTLoginViewController: UIViewController {
         rtcEngine?.setChannelProfile(.channelProfile_LiveBroadcasting)
         rtcEngine?.setClientRole(clientRole, withKey: nil)
         rtcEngine?.enableAudioVolumeIndication(200, smooth: 3)
+        
         let swapWH = UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)
         if clientRole == .clientRole_Anchor {
-            rtcEngine?.enableVideo()
-            rtcEngine?.muteLocalAudioStream(false)
-            let builder = TTTPublisherConfigurationBuilder()
-            var pushUrl = "rtmp://push.3ttech.cn/sdk/\(rid)"
-            if TTManager.cdn.h265 {
-                pushUrl += TTTH265
+            //标识自定义本地或者cdn
+            if TTManager.isCustom {
+                customEnterChannel(rid)
+            } else {
+                rtcEngine?.enableVideo()
+                rtcEngine?.muteLocalAudioStream(false)
+                let builder = TTTPublisherConfigurationBuilder()
+                let pushUrl = "rtmp://push.3ttech.cn/sdk/\(rid)"
+                
+                builder.setPublisherUrl(pushUrl)
+                rtcEngine?.configPublisher(builder.build())
+                //拉流地址--"rtmp://pull.3ttech.cn/sdk/\(rid)"
+                print("rtmp://pull.3ttech.cn/sdk/\(rid)")
+                rtcEngine?.setVideoProfile(._VideoProfile_360P, swapWidthAndHeight: swapWH)
             }
-            builder.setPublisherUrl(pushUrl)
-            //拉流地址--"rtmp://pull.3ttech.cn/sdk/\(rid)"
-            print("rtmp://pull.3ttech.cn/sdk/\(rid)")
-            rtcEngine?.configPublisher(builder.build())
-            if TTManager.customCdn {
-                rtcEngine?.setVideoMixerParams(TTManager.videoMixSize, videoFrameRate: UInt(TTManager.cdn.fps), videoBitRate: UInt(TTManager.cdn.videoBitRate))
-                if TTManager.cdn.channels {
-                    rtcEngine?.setAudioMixerParams(44100, channels: 2)
-                } else {
-                    rtcEngine?.setAudioMixerParams(48000, channels: 1)
-                }
-            }
-            rtcEngine?.setVideoProfile(._VideoProfile_360P, swapWidthAndHeight: swapWH)
         } else if clientRole == .clientRole_Broadcaster {
             rtcEngine?.enableVideo()
             rtcEngine?.muteLocalAudioStream(false)
             rtcEngine?.setVideoProfile(._VideoProfile_120P, swapWidthAndHeight: swapWH)
         }
+        rtcEngine?.enableAudioDataReport(false, remote: false)
         rtcEngine?.joinChannel(byKey: nil, channelName: roomIDTF.text!, uid: uid, joinSuccess: nil)
     }
     
-    @IBAction private func cdnSettingAction(_ sender: Any) {
-        cdnVC.view.isHidden = false
+    private func customEnterChannel(_ rid: Int64) {
+        let rtcEngine = TTManager.rtcEngine
+        rtcEngine?.enableVideo()
+        rtcEngine?.muteLocalAudioStream(false)
+        let builder = TTTPublisherConfigurationBuilder()
+        var pushUrl = "rtmp://push.3ttech.cn/sdk/\(rid)"
+        //h265
+        if TTManager.h265 {
+            pushUrl += TTTH265
+        }
+        builder.setPublisherUrl(pushUrl)
+        rtcEngine?.configPublisher(builder.build())
+        //local
+        let swapWH = UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)
+        if TTManager.localCustomProfile.isCustom {//自定义
+            let custom = TTManager.localCustomProfile
+            var videoSize = custom.videoSize
+            if swapWH {
+                videoSize = CGSize(width: videoSize.height, height: videoSize.width)
+            }
+            rtcEngine?.setVideoProfile(videoSize, frameRate: UInt(custom.fps), bitRate: UInt(custom.bitrate))
+        } else {
+            rtcEngine?.setVideoProfile(TTManager.localProfile, swapWidthAndHeight: swapWH)
+        }
+        //高音质
+        if TTManager.isHighQualityAudio {
+            rtcEngine?.setHighQualityAudioParametersWithFullband(true, stereo: true, fullBitrate: true)
+        }
+        //--cdn
+        let custom = TTManager.cdnCustom
+        var videoSize = custom.videoSize
+        if swapWH {
+            videoSize = CGSize(width: videoSize.height, height: videoSize.width)
+        }
+        rtcEngine?.setVideoMixerParams(videoSize, videoFrameRate: UInt(custom.fps), videoBitRate: UInt(custom.bitrate))
+        if TTManager.doubleChannel {
+            rtcEngine?.setAudioMixerParams(44100, channels: 2)
+        } else {
+            rtcEngine?.setAudioMixerParams(48000, channels: 1)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -41,7 +41,7 @@ class TTTAVRegion: UIView {
     private func loadNibView() {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "TTTAVRegion", bundle: bundle)
-        backgroundView = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        backgroundView = nib.instantiate(withOwner: self, options: nil)[0] as? UIView
         backgroundView.frame = bounds
         backgroundView.alpha = 0.7
         backgroundView.backgroundColor = UIColor.clear
@@ -53,7 +53,7 @@ class TTTAVRegion: UIView {
         sender.isSelected = !sender.isSelected
         TTManager.me.mutedSelf = sender.isSelected
         TTManager.rtcEngine.muteLocalAudioStream(sender.isSelected)
-        mutedSelf(TTManager.me.mutedSelf)
+        voiceBtn.setImage(sender.isSelected ? #imageLiteral(resourceName: "voice_close") : #imageLiteral(resourceName: "voice_small"), for: .normal)
     }
     
     @IBAction private func switchBtnAction(_ sender: Any) {

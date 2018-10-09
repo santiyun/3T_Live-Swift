@@ -22,7 +22,7 @@ class TTTLiveViewController: UIViewController {
     @IBOutlet private weak var audioStatsLabel: UILabel!
     @IBOutlet private weak var videoStatsLabel: UILabel!
     @IBOutlet private weak var avRegionsView: UIView!
-    
+    @IBOutlet private weak var wxView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,27 +38,35 @@ class TTTLiveViewController: UIViewController {
             videoCanvas.renderMode = .render_Adaptive
             videoCanvas.view = anchorImgView
             TTManager.rtcEngine.setupLocalVideo(videoCanvas)
-            //init sei obj---size for anchor
+            //init sei obj---
             videoLayout = TTTRtcVideoCompositingLayout()
-            videoLayout?.canvasWidth = Int(TTManager.videoMixSize.width)
-            videoLayout?.canvasHeight = Int(TTManager.videoMixSize.height)
+            if TTManager.isCustom {
+                //竖屏模式
+                videoLayout?.canvasWidth = Int(TTManager.cdnCustom.videoSize.height)
+                videoLayout?.canvasHeight = Int(TTManager.cdnCustom.videoSize.width)
+            } else {
+                videoLayout?.canvasWidth = 360
+                videoLayout?.canvasHeight = 640
+            }
             videoLayout?.backgroundColor = "#e8e6e8"
         } else if TTManager.me.clientRole == .clientRole_Broadcaster {
             TTManager.rtcEngine.startPreview()
             switchBtn.isHidden = true
         }
-        //必须确保UI更新完成，否则接受SEI可能找不到对应位置-iPhone5c
+        //必须确保UI更新完成，否则SEI可能找不到对应位置-iPhone5c
         view.layoutIfNeeded()
     }
     
     @IBAction func leftBtnsAction(_ sender: UIButton) {
-        if sender == voiceBtn {
+        if sender.tag == 1001 {
             if TTManager.me.isAnchor {
                 sender.isSelected = !sender.isSelected
                 TTManager.me.mutedSelf = sender.isSelected
                 TTManager.rtcEngine.muteLocalAudioStream(sender.isSelected)
             }
-        } else {
+        } else if sender.tag == 1002 {
+            wxView.isHidden = false
+        } else if sender.tag == 1003 {
             TTManager.rtcEngine.switchCamera()
         }
     }
@@ -73,6 +81,28 @@ class TTTLiveViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
+    @IBAction private func hiddenWXView(_ sender: Any) {
+        wxView.isHidden = true
+    }
+    
+    @IBAction private func wxShare(_ sender: UIButton) {
+        wxView.isHidden = true
+        if WXApi.isWXAppInstalled() {
+            let req = SendMessageToWXReq()
+            let messgae = WXMediaMessage()
+            messgae.title = "连麦直播"
+            messgae.description = "三体云联邀请你加入直播间：\(TTManager.roomID)"
+            messgae.thumbData = UIImagePNGRepresentation(UIImage(named: "wx_logo")!)!
+            let object = WXWebpageObject()
+            object.webpageUrl = "http://3ttech.cn/3tplayer.html?flv=http://pull1.3ttech.cn/sdk/\(TTManager.roomID).flv&hls=http://pull1.3ttech.cn/sdk/\(TTManager.roomID).m3u8"
+            messgae.mediaObject = object
+            req.message = messgae
+            req.scene = Int32(sender.tag == 101 ? WXSceneSession.rawValue : WXSceneTimeline.rawValue)
+            WXApi.send(req)
+        } else {
+            showToast("手机未安装微信")
+        }
+    }
 }
 
 extension TTTLiveViewController: TTTRtcEngineDelegate {
@@ -92,10 +122,6 @@ extension TTTLiveViewController: TTTRtcEngineDelegate {
                 getAvaiableAVRegion()?.configureRegion(user)
                 refreshVideoCompositingLayout()
             }
-        } else {
-            if TTManager.me.isAnchor {
-                refreshVideoCompositingLayout()
-            }
         }
     }
     
@@ -108,16 +134,14 @@ extension TTTLiveViewController: TTTRtcEngineDelegate {
         posArray.forEach { (pos) in
             let uidStr = pos["id"] as! String
             let uid = (uidStr as NSString).integerValue//PC 1111:wdkdk____Camera==1111
-            if let user = getUser(Int64(uid))?.0 {
-                if user.clientRole == .clientRole_Broadcaster {
-                    if getAVRegion(Int64(uidStr)!) != nil { return }
-                    let videoPosition = TTTVideoPosition()
-                    videoPosition.x = pos["x"] as! Double
-                    videoPosition.y = pos["y"] as! Double
-                    videoPosition.w = pos["w"] as! Double
-                    videoPosition.h = pos["h"] as! Double
-                    positionPlayer(videoPosition)?.configureRegion(user)
-                }
+            if let user = getUser(Int64(uid))?.0, user.clientRole == .clientRole_Broadcaster {
+                if getAVRegion(Int64(uidStr)!) != nil { return }
+                let videoPosition = TTTVideoPosition()
+                videoPosition.x = pos["x"] as! Double
+                videoPosition.y = pos["y"] as! Double
+                videoPosition.w = pos["w"] as! Double
+                videoPosition.h = pos["h"] as! Double
+                positionPlayer(videoPosition)?.configureRegion(user)
             }
         }
     }
@@ -184,18 +208,14 @@ extension TTTLiveViewController: TTTRtcEngineDelegate {
     
     func rtcEngine(_ engine: TTTRtcEngineKit!, didLeaveChannelWith stats: TTTRtcStats!) {
         engine.stopPreview()
-        dismiss(animated: true) {
-            TTManager.originCdn()
-        }
+        dismiss(animated: true, completion: nil)
     }
     
     func rtcEngineConnectionDidLost(_ engine: TTTRtcEngineKit!) {
         view.window?.showToast("ConnectionDidLost")
         engine.leaveChannel(nil)
         engine.stopPreview()
-        dismiss(animated: true) {
-            TTManager.originCdn()
-        }
+        dismiss(animated: true, completion: nil)
     }
     
     func rtcEngine(_ engine: TTTRtcEngineKit!, didKickedOutOfUid uid: Int64, reason: TTTRtcKickedOutReason) {
@@ -222,6 +242,7 @@ extension TTTLiveViewController: TTTRtcEngineDelegate {
         }
         view.window?.showToast(errorInfo)
     }
+    
 }
 
 private extension TTTLiveViewController {

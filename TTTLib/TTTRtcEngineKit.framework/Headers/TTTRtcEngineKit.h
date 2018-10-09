@@ -159,18 +159,30 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoStreamType) {
 };
 
 /**
- *  会话数据信息
+ *  网络质量
+ */
+typedef NS_ENUM(NSUInteger, TTTNetworkQuality) {
+    TTTNetworkQualityExcellent = 1,
+    TTTNetworkQualityGood      = 2,
+    TTTNetworkQualityCommon    = 3,
+    TTTNetworkQualityPoor      = 4,
+    TTTNetworkQualityBad       = 5,
+    TTTNetworkQualityDown      = 6,
+};
+
+/**
+ *  通话相关的统计信息
  */
 @interface TTTRtcStats : NSObject
 
-@property (assign, nonatomic) NSUInteger duration;        // 通话时长，累计值
+@property (assign, nonatomic) NSUInteger duration;        // 通话时长，单位为秒，累计值
 @property (assign, nonatomic) NSUInteger txBytes;         // 发送字节数，累计值
 @property (assign, nonatomic) NSUInteger rxBytes;         // 接收字节数，累计值
-@property (assign, nonatomic) NSUInteger txAudioKBitrate;
-@property (assign, nonatomic) NSUInteger rxAudioKBitrate;
-@property (assign, nonatomic) NSUInteger txVideoKBitrate;
-@property (assign, nonatomic) NSUInteger rxVideoKBitrate;
-@property (assign, nonatomic) NSUInteger users;
+@property (assign, nonatomic) NSUInteger txAudioKBitrate; // 音频发送码率 (kbps)，瞬时值
+@property (assign, nonatomic) NSUInteger rxAudioKBitrate; // 音频接收码率 (kbps)，瞬时值
+@property (assign, nonatomic) NSUInteger txVideoKBitrate; // 视频发送码率 (kbps)，瞬时值
+@property (assign, nonatomic) NSUInteger rxVideoKBitrate; // 视频接收码率 (kbps)，瞬时值
+@property (assign, nonatomic) NSUInteger users;           // 房间内的瞬时人数
 
 @end
 
@@ -446,7 +458,7 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *
  *  @return 0: 方法调用成功，<0: 方法调用失败。
  */
-- (int)leaveChannel:(void(^)(TTTRtcStats* stat))leaveChannelBlock;
+- (int)leaveChannel:(void(^)(TTTRtcStats *stats))leaveChannelBlock;
 
 /**
  *  该方法用于开启视频模式。
@@ -513,6 +525,16 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
 - (int)switchCamera;
 
 /**
+*  设置前置摄像头镜像
+*  默认打开前置摄像头镜像
+*
+*  @param mirror YES: 开启镜像，NO: 关闭镜像。
+*
+*  @return 0: 方法调用成功，<0: 方法调用失败。
+*/
+- (int)setVideoMirrored:(BOOL)mirror;
+
+/**
  *  暂停所有远端视频流
  *
  *  @param mute YES: 停止播放接收到的所有视频流，NO: 允许播放接收到的所有视频流。
@@ -530,15 +552,6 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *  @return 0: 方法调用成功，<0: 方法调用失败。
  */
 - (int)muteRemoteVideoStream:(int64_t)uid mute:(BOOL)mute;
-
-/**
- *  打开/关闭耳返功能，在插入耳机的情况下有效
- *
- *  @param enable YES: 打开耳返功能，NO: 关闭耳返功能。
- *
- *  @return 0: 方法调用成功，<0: 方法调用失败。
- */
-- (int)enableAudioEarBack:(BOOL)enable;
 
 /**
  *  静音/取消静音。该方法用于允许/禁止往网络发送本地音频流。
@@ -575,6 +588,37 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *  @return 0: 方法调用成功，<0: 方法调用失败。
  */
 - (int)muteRemoteSpeaking:(int64_t)uid mute:(BOOL)mute;
+
+/*
+ * 启用/禁用回声消除
+ * 加入房间之后调用
+ *
+ * @param enable 是否启用
+ *
+ * @return 0: 方法调用成功，<0: 方法调用失败。
+ */
+- (int)enableHWAEC:(BOOL)enable;
+
+/**
+ *  打开/关闭耳返功能，在插入耳机的情况下有效
+ *
+ *  @param enable YES: 打开耳返功能，NO: 关闭耳返功能。
+ *
+ *  @return 0: 方法调用成功，<0: 方法调用失败。
+ */
+- (int)enableAudioEarBack:(BOOL)enable;
+
+/**
+ *  启用/关闭本地音频和远端音频数据回调
+ *  对应本地和远端音频数据的代理回调
+ *
+ *  @param local YES: 获取本地音频数据，NO: 关闭获取本地音频数据。
+ *
+ *  @param remote YES: 获取远端音频数据，NO: 关闭获取远端音频数据。
+ *
+ *  @return 0: 方法调用成功，<0: 方法调用失败。
+ */
+- (int)enableAudioDataReport:(BOOL)enableLocal remote:(BOOL)enableRemote;
 
 #if TARGET_OS_IPHONE
 
@@ -622,7 +666,7 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *
  *  @return 0: 方法调用成功，<0: 方法调用失败。
  */
-- (int)setLogFile:(NSString*)filePath;
+- (int)setLogFile:(NSString *)filePath;
 
 /**
  *  设置日志文件过滤器
@@ -1028,6 +1072,20 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  */
 - (void)setVideoMixerBackgroundImgUrl:(NSString*)url;
 
+/**
+ *  开启网络质量检测
+ *
+ *  @return 0: 方法调用成功，<0: 方法调用失败。
+ */
+- (int)enableLastmileTest;
+
+/**
+ *  关闭网络质量检测
+ *
+ *  @return 0: 方法调用成功，<0: 方法调用失败。
+ */
+- (int)disableLastmileTest;
+
 @end
 
 /**
@@ -1071,7 +1129,7 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *
  *  @param stats 统计数据
  */
-- (void)rtcEngine:(TTTRtcEngineKit *)engine didLeaveChannelWithStats:(TTTRtcStats*)stats;
+- (void)rtcEngine:(TTTRtcEngineKit *)engine didLeaveChannelWithStats:(TTTRtcStats *)stats;
 
 /**
  *  用户加入回调
@@ -1099,6 +1157,14 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *  @param reason 用户被踢出的原因
  */
 - (void)rtcEngine:(TTTRtcEngineKit *)engine didKickedOutOfUid:(int64_t)uid reason:(TTTRtcKickedOutReason)reason;
+
+/**
+ *  用户角色切换回调
+ *
+ *  @param uid  用户ID
+ *  @param role 用户角色
+ */
+- (void)rtcEngine:(TTTRtcEngineKit *)engine didClientRoleChangedOfUid:(int64_t)uid role:(TTTRtcClientRole)role;
 
 /**
  *  禁止/允许用户发言回调
@@ -1132,32 +1198,39 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
 - (void)rtcEngine:(TTTRtcEngineKit *)engine didAudioRouteChanged:(TTTRtcAudioOutputRouting)routing;
 
 /**
+ *  RtcEngine统计数据回调
+ *
+ *  @param stats 通话相关的统计信息
+ */
+- (void)rtcEngine:(TTTRtcEngineKit *)engine reportRtcStats:(TTTRtcStats *)stats;
+
+/**
  *  本地视频统计回调
  *
  *  @param stats 本地视频的统计信息
  */
-- (void)rtcEngine:(TTTRtcEngineKit *)engine localVideoStats:(TTTRtcLocalVideoStats*)stats;
+- (void)rtcEngine:(TTTRtcEngineKit *)engine localVideoStats:(TTTRtcLocalVideoStats *)stats;
 
 /**
  *  本地音频统计回调
  *
  *  @param stats 本地音频的统计信息
  */
-- (void)rtcEngine:(TTTRtcEngineKit *)engine localAudioStats:(TTTRtcLocalAudioStats*)stats;
+- (void)rtcEngine:(TTTRtcEngineKit *)engine localAudioStats:(TTTRtcLocalAudioStats *)stats;
 
 /**
  *  远端视频统计回调
  *
  *  @param stats 远端视频的统计信息
  */
-- (void)rtcEngine:(TTTRtcEngineKit *)engine remoteVideoStats:(TTTRtcRemoteVideoStats*)stats;
+- (void)rtcEngine:(TTTRtcEngineKit *)engine remoteVideoStats:(TTTRtcRemoteVideoStats *)stats;
 
 /**
  *  远端音频统计回调
  *
  *  @param stats 远端音频的统计信息
  */
-- (void)rtcEngine:(TTTRtcEngineKit *)engine remoteAudioStats:(TTTRtcRemoteAudioStats*)stats;
+- (void)rtcEngine:(TTTRtcEngineKit *)engine remoteAudioStats:(TTTRtcRemoteAudioStats *)stats;
 
 /**
  *  远端用户音量回调
@@ -1176,6 +1249,28 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *  @param uid     用户ID，指定是哪个用户的音频数据
  */
 - (void)rtcEngine:(TTTRtcEngineKit *)engine firstRemoteAudioDataIncommingOfUid:(int64_t)uid;
+
+/**
+ *  本端音频采集数据回调
+ *  通过"enableAudioDataReport:(BOOL)enableLocal remote:(BOOL)enableRemote"启用
+ *
+ *  @param data        PCM数据
+ *  @param size        PCM数据长度
+ *  @param sampleRate  采样率
+ *  @param channels    声道数
+ */
+- (void)rtcEngine:(TTTRtcEngineKit *)engine localAudioData:(char *)data dataSize:(NSUInteger)size sampleRate:(NSUInteger)sampleRate channels:(NSUInteger)channels;
+
+/**
+ *  远端音频数据回调
+ *  通过"enableAudioDataReport:(BOOL)enableLocal remote:(BOOL)enableRemote"启用
+ *
+ *  @param data        音频数据
+ *  @param size        数据长度
+ *  @param sampleRate  采样率
+ *  @param channels    声道数
+ */
+- (void)rtcEngine:(TTTRtcEngineKit *)engine remoteAudioData:(char *)data dataSize:(NSUInteger)size sampleRate:(NSUInteger)sampleRate channels:(NSUInteger)channels;
 
 /**
  *  本地首帧视频显示回调
@@ -1337,5 +1432,14 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  */
 
 - (void)rtcEngine:(TTTRtcEngineKit *)engine videoConnectFailed:(NSString *)mediaID;
+
+/**
+ *  网络质量检测回调
+ *  "- (int)enableLastmileTest;"调用该方法开启
+ *
+ *  @param quality 网络质量
+ *
+ */
+- (void)rtcEngine:(TTTRtcEngineKit *)engine lastmileQuality:(TTTNetworkQuality)quality;
 
 @end
