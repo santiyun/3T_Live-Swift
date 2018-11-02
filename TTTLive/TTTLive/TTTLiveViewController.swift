@@ -94,7 +94,7 @@ class TTTLiveViewController: UIViewController {
             messgae.description = "三体云联邀请你加入直播间：\(TTManager.roomID)"
             messgae.thumbData = UIImagePNGRepresentation(UIImage(named: "wx_logo")!)!
             let object = WXWebpageObject()
-            object.webpageUrl = "http://3ttech.cn/3tplayer.html?flv=http://pull1.3ttech.cn/sdk/\(TTManager.roomID).flv&hls=http://pull1.3ttech.cn/sdk/\(TTManager.roomID).m3u8"
+            object.webpageUrl = "http://3ttech.cn/3tplayer.html?flv=http://pull.3ttech.cn/sdk/\(TTManager.roomID).flv&hls=http://pull.3ttech.cn/sdk/\(TTManager.roomID).m3u8"
             messgae.mediaObject = object
             req.message = messgae
             req.scene = Int32(sender.tag == 101 ? WXSceneSession.rawValue : WXSceneTimeline.rawValue)
@@ -184,6 +184,7 @@ extension TTTLiveViewController: TTTRtcEngineDelegate {
     }
     
     func rtcEngine(_ engine: TTTRtcEngineKit!, remoteAudioStats stats: TTTRtcRemoteAudioStats!) {
+        print("remoteAuido---:\(stats.delay)")
         guard let user = getUser(stats.uid)?.0 else { return }
         if user.isAnchor {
             audioStatsLabel.text = "A-↓\(stats.receivedBitrate)kbps"
@@ -193,6 +194,7 @@ extension TTTLiveViewController: TTTRtcEngineDelegate {
     }
     
     func rtcEngine(_ engine: TTTRtcEngineKit!, remoteVideoStats stats: TTTRtcRemoteVideoStats!) {
+        print("remoteVideo---:\(stats.delay)")
         guard let user = getUser(stats.uid)?.0 else { return }
         if user.isAnchor {
             videoStatsLabel.text = "V-↓\(stats.receivedBitrate)kbps"

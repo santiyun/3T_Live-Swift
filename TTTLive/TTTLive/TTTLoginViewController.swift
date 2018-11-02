@@ -24,7 +24,7 @@ class TTTLoginViewController: UIViewController {
         super.viewDidLoad()
 
         roleSelectedBtn = anchorBtn
-        let websitePrefix = "http://www.3ttech.cn  version  "
+        let websitePrefix = "http://www.3ttech.cn "
         websiteLabel.text = websitePrefix + TTTRtcEngineKit.getSdkVersion()
         uid = Int64(arc4random() % 100000) + 1
         if let rid = UserDefaults.standard.value(forKey: "ENTERROOMID") as? String {
@@ -87,7 +87,6 @@ class TTTLoginViewController: UIViewController {
             rtcEngine?.muteLocalAudioStream(false)
             rtcEngine?.setVideoProfile(._VideoProfile_120P, swapWidthAndHeight: swapWH)
         }
-        rtcEngine?.enableAudioDataReport(false, remote: false)
         rtcEngine?.joinChannel(byKey: nil, channelName: roomIDTF.text!, uid: uid, joinSuccess: nil)
     }
     
@@ -150,7 +149,7 @@ extension TTTLoginViewController: TTTRtcEngineDelegate {
         case .error_Enter_TimeOut:
             errorInfo = "超时,10秒未收到服务器返回结果"
         case .error_Enter_Failed:
-            errorInfo = "无法连接服务器"
+            errorInfo = "该直播间不存在"
         case .error_Enter_BadVersion:
             errorInfo = "版本错误"
         case .error_InvalidChannelName:

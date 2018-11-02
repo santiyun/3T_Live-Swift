@@ -25,6 +25,9 @@ typedef NS_ENUM(NSUInteger, TTTRtcErrorCode) {
     TTTRtc_Error_Enter_BadVersion   = 9004, // 版本错误
     TTTRtc_Error_Enter_Unknown      = 9005, // 未知错误
     //
+    TTTRtc_Error_NoAudioData        = 9101, // 长时间没有上行音频数据
+    TTTRtc_Error_NoVideoData        = 9102, // 长时间没有上行视频数据
+    //
     TTTRtc_Error_Unknown            = 9999, // 未知错误
 };
 
@@ -208,6 +211,7 @@ typedef NS_ENUM(NSUInteger, TTTNetworkQuality) {
 @property (assign, nonatomic) NSUInteger encodedBitrate;  // 编码的码率(kbps)
 @property (assign, nonatomic) NSUInteger sentBitrate;     // 发送的码率(kbps)
 @property (assign, nonatomic) NSUInteger receivedBitrate; // 接收的码率(kbps)
+@property (assign, nonatomic) NSUInteger captureDataSize; // push数据量
 
 @end
 
@@ -234,6 +238,9 @@ typedef NS_ENUM(NSUInteger, TTTNetworkQuality) {
 
 @property (assign, nonatomic) int64_t uid;
 @property (assign, nonatomic) NSUInteger receivedBitrate;
+@property (assign, nonatomic) NSUInteger loseRate;          //丢包率
+@property (assign, nonatomic) NSUInteger bufferDuration;    //缓存时常
+@property (assign, nonatomic) NSUInteger delay;             //
 
 @end
 
@@ -517,6 +524,7 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  */
 - (int)setupRemoteVideo:(TTTRtcVideoCanvas*)remote;
 
+#if TARGET_OS_IPHONE
 /**
  *  切换前置/后置摄像头
  *
@@ -533,6 +541,7 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
 *  @return 0: 方法调用成功，<0: 方法调用失败。
 */
 - (int)setVideoMirrored:(BOOL)mirror;
+#endif
 
 /**
  *  暂停所有远端视频流
@@ -612,9 +621,9 @@ typedef NS_ENUM(NSUInteger, TTTRtcVideoFrameFormat) {
  *  启用/关闭本地音频和远端音频数据回调
  *  对应本地和远端音频数据的代理回调
  *
- *  @param local YES: 获取本地音频数据，NO: 关闭获取本地音频数据。
+ *  @param enableLocal YES: 获取本地音频数据，NO: 关闭获取本地音频数据。
  *
- *  @param remote YES: 获取远端音频数据，NO: 关闭获取远端音频数据。
+ *  @param enableRemote YES: 获取远端音频数据，NO: 关闭获取远端音频数据。
  *
  *  @return 0: 方法调用成功，<0: 方法调用失败。
  */
