@@ -1,5 +1,7 @@
 ### 连麦直播-Swift
 
+到[三体官网](http://3ttech.cn)下载最新的SDK，把framework放在TTTLib目录下，使用申请的AppID
+
 1. 该demo使用链接framework的方式，参考other link flags
 
 2. 在framework search path添加framework路径
