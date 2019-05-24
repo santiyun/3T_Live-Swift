@@ -116,7 +116,7 @@ class T3LoginViewController: UIViewController {
         }
         //高音质
         if AppManager.isHighQualityAudio {
-            rtcEngine?.setHighQualityAudioParametersWithFullband(true, stereo: true, fullBitrate: true)
+            rtcEngine?.setPrefer(.audioCodec_AAC, bitrate: 96, channels: 1)
         }
         //--cdn
         let custom = AppManager.cdnCustom
@@ -155,6 +155,8 @@ extension T3LoginViewController: TTTRtcEngineDelegate {
             errorInfo = "版本错误"
         case .error_InvalidChannelName:
             errorInfo = "Invalid channel name"
+        case .error_Enter_NoAnchor:
+            errorInfo = "房间内无主播"
         default:
             errorInfo = "未知错误: " + errorCode.rawValue.description
         }

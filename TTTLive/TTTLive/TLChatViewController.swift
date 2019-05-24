@@ -45,7 +45,7 @@ class TLChatViewController: UIViewController {
                 videoLayout?.canvasWidth = Int(AppManager.cdnCustom.videoSize.height)
                 videoLayout?.canvasHeight = Int(AppManager.cdnCustom.videoSize.width)
             } else {
-                videoLayout?.canvasWidth = 360
+                videoLayout?.canvasWidth = 352
                 videoLayout?.canvasHeight = 640
             }
             videoLayout?.backgroundColor = "#e8e6e8"
@@ -74,8 +74,10 @@ class TLChatViewController: UIViewController {
     @IBAction func exitChannel(_ sender: Any) {
         let alert = UIAlertController(title: "提示", message: "你确定要退出房间吗？", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
-        let sureAction = UIAlertAction(title: "确定", style: .default) { (action) in
+        let sureAction = UIAlertAction(title: "确定", style: .default) { [weak self] (action) in
             AppManager.rtcEngine.leaveChannel(nil)
+            AppManager.rtcEngine.stopPreview()
+            self?.dismiss(animated: true, completion: nil)
         }
         alert.addAction(sureAction)
         present(alert, animated: true, completion: nil)
@@ -207,16 +209,6 @@ extension TLChatViewController: TTTRtcEngineDelegate {
         }
     }
     
-    func rtcEngine(_ engine: TTTRtcEngineKit!, firstRemoteVideoFrameDecodedOfUid uid: Int64, size: CGSize, elapsed: Int) {
-        //解码远端用户第一帧
-        print("firstRemoteVideoFrameDecodedOfUid -- \(uid)")
-    }
-    
-    func rtcEngine(_ engine: TTTRtcEngineKit!, didLeaveChannelWith stats: TTTRtcStats!) {
-        engine.stopPreview()
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     func rtcEngineConnectionDidLost(_ engine: TTTRtcEngineKit!) {
         YZHud.showHud(view, message: "网络链接丢失，正在重连...", color: nil)
@@ -257,6 +249,9 @@ extension TLChatViewController: TTTRtcEngineDelegate {
             errorInfo = "未知错误"
         }
         view.window?.showToast(errorInfo)
+        engine.leaveChannel(nil)
+        engine.stopPreview()
+        dismiss(animated: true, completion: nil)
     }
     
 }

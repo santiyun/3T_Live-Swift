@@ -106,8 +106,7 @@ class T3Manager: NSObject {
     
     private override init() {
         super.init()
-        let appId = <#name#>
-        rtcEngine = TTTRtcEngineKit.sharedEngine(withAppId: appId, delegate: nil)
+        rtcEngine = TTTRtcEngineKit.sharedEngine(withAppId: <#name#>, delegate: nil)
     }
     
     public func getVoiceImage(_ audioLevel: UInt) -> UIImage {
