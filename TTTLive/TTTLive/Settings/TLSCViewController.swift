@@ -29,7 +29,7 @@ class TLSCViewController: UIViewController {
     private var doubleChannel = false
     private var profileIndex = 0
     private var pickerType = PickerType.size
-    private let videoSizes = ["120P", "180P", "240P", "360P", "480P", "720P", "自定义"]
+    private let videoSizes = ["120P", "180P", "240P", "360P", "480P", "720P", "1080P", "自定义"]
     private let encodeTypes = ["H264", "H265"]
     private let channelTypes = ["48kHz-单声道", "44.1kHz-双声道"]
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class TLSCViewController: UIViewController {
         let isCustom = AppManager.cdnCustom.isCustom
         refreshState(isCustom, profile: AppManager.cdnProfile)
         if isCustom {
-            profileIndex = 6
+            profileIndex = 7
             pickView.selectRow(profileIndex, inComponent: 0, animated: true)
             let custom = AppManager.cdnCustom
             videoSizeTF.text = "\(Int(custom.videoSize.width))x\(Int(custom.videoSize.height))"
@@ -147,7 +147,7 @@ class TLSCViewController: UIViewController {
             h265 = index == 1
         } else {
             let profile: TTTRtcVideoProfile = TTTRtcVideoProfile(rawValue: UInt(index * 10))!
-            refreshState(index == 6, profile: profile)
+            refreshState(index == 7, profile: profile)
         }
     }
     

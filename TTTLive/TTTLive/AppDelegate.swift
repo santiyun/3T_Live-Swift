@@ -7,9 +7,7 @@
 //
 
 import UIKit
-//3T_Native_SDK-Demo_V2.0.0_VLive
-//3T_Native_SDK-Demo_V2.0.0_ACall
-//3T_Native_SDK-Demo_V2.0.0_VCall
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -18,7 +18,7 @@ class TLSLViewController: UIViewController {
     @IBOutlet private weak var audioSwitch: UISwitch!
     @IBOutlet private weak var pickBGView: UIView!
     @IBOutlet private weak var pickView: UIPickerView!
-    private let videoSizes = ["120P", "180P", "240P", "360P", "480P", "720P", "自定义"]
+    private let videoSizes = ["120P", "180P", "240P", "360P", "480P", "720P", "1080P", "自定义"]
     override func viewDidLoad() {
         super.viewDidLoad()
         //        print("---local:\(view)")
@@ -26,7 +26,7 @@ class TLSLViewController: UIViewController {
         let isCustom = AppManager.localCustomProfile.isCustom
         refreshState(isCustom, profile: AppManager.localProfile)
         if isCustom {
-            pickView.selectRow(6, inComponent: 0, animated: true)
+            pickView.selectRow(7, inComponent: 0, animated: true)
             let custom = AppManager.localCustomProfile
             videoSizeTF.text = "\(Int(custom.videoSize.width))x\(Int(custom.videoSize.height))"
             videoBitrateTF.text = custom.bitrate.description
@@ -100,7 +100,7 @@ class TLSLViewController: UIViewController {
         pickBGView.isHidden = true
         let index = pickView.selectedRow(inComponent: 0)
         let profile: TTTRtcVideoProfile = TTTRtcVideoProfile(rawValue: UInt(index * 10))!
-        refreshState(index == 6, profile: profile)
+        refreshState(index == 7, profile: profile)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

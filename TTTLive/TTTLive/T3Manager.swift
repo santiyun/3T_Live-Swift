@@ -25,6 +25,8 @@ extension TTTRtcVideoProfile {
             size = CGSize(width: 640, height: 480)
         case ._VideoProfile_720P:
             size = CGSize(width: 1280, height: 720)
+        case ._VideoProfile_1080P:
+            size = CGSize(width: 1920, height: 1080)
         default:
             size = CGSize(width: 640, height: 360)
         }
@@ -43,6 +45,8 @@ extension TTTRtcVideoProfile {
             return 500
         case ._VideoProfile_720P:
             return 1130
+        case ._VideoProfile_1080P:
+            return 2080
         default:
             return 400
         }
@@ -62,6 +66,8 @@ extension TTTRtcVideoProfile {
             return "500"
         case ._VideoProfile_720P:
             return "1130"
+        case ._VideoProfile_1080P:
+            return "2080"
         default:
             return "400"
         }
@@ -106,6 +112,7 @@ class T3Manager: NSObject {
     
     private override init() {
         super.init()
+        //设置AppID
         rtcEngine = TTTRtcEngineKit.sharedEngine(withAppId: <#name#>, delegate: nil)
     }
     

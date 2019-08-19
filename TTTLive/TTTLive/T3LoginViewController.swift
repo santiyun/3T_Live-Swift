@@ -74,12 +74,11 @@ class T3LoginViewController: UIViewController {
                 rtcEngine?.enableVideo()
                 rtcEngine?.muteLocalAudioStream(false)
                 let builder = TTTPublisherConfigurationBuilder()
-                let pushUrl = "rtmp://push.3ttech.cn/sdk/\(rid)"
+                let pushUrl = "rtmp://push.3ttest.cn/sdk2/\(rid)"
                 
                 builder.setPublisherUrl(pushUrl)
                 rtcEngine?.configPublisher(builder.build())
-                //拉流地址--"rtmp://pull.3ttech.cn/sdk/\(rid)"
-                print("rtmp://pull.3ttech.cn/sdk/\(rid)")
+                print("rtmp://pull.3ttest.cn/sdk2/\(rid)")
                 rtcEngine?.setVideoProfile(._VideoProfile_360P, swapWidthAndHeight: swapWH)
             }
         } else if clientRole == .clientRole_Broadcaster {
@@ -95,7 +94,7 @@ class T3LoginViewController: UIViewController {
         rtcEngine?.enableVideo()
         rtcEngine?.muteLocalAudioStream(false)
         let builder = TTTPublisherConfigurationBuilder()
-        var pushUrl = "rtmp://push.3ttech.cn/sdk/\(rid)"
+        var pushUrl = "rtmp://push.3ttest.cn/sdk2/\(rid)"
         //h265
         if AppManager.h265 {
             pushUrl += TTTH265

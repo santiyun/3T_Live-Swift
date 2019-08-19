@@ -89,7 +89,7 @@ class TLChatViewController: UIViewController {
     
     @IBAction private func wxShare(_ sender: UIButton) {
         wxView.isHidden = true
-        let shareUrl = "http://3ttech.cn/3tplayer.html?flv=http://pull.3ttech.cn/sdk/\(AppManager.roomID).flv&hls=http://pull.3ttech.cn/sdk/\(AppManager.roomID).m3u8"
+        let shareUrl = "http://3ttech.cn/3tplayer.html?flv=http://pull.3ttest.cn/sdk2/\(AppManager.roomID).flv&hls=http://pull.3ttest.cn/sdk2/\(AppManager.roomID).m3u8"
         if sender.tag < 103 {
             if WXApi.isWXAppInstalled() {
                 let req = SendMessageToWXReq()
