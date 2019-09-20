@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TTTAVRegion">
+            <connections>
+                <outlet property="audioStatsLabel" destination="RnG-2X-DvG" id="dgC-4v-OSK"/>
+                <outlet property="backgroundView" destination="0SY-fD-Qgm" id="0e7-vE-huM"/>
+                <outlet property="idLabel" destination="Utw-ZM-ewQ" id="WhL-gx-fWR"/>
+                <outlet property="switchBtn" destination="wPH-2T-IQ4" id="VSM-Dc-2o9"/>
+                <outlet property="videoStatsLabel" destination="BGH-jG-V6m" id="gxI-DZ-PVE"/>
+                <outlet property="videoView" destination="sr1-RV-m5N" id="gct-Eh-29R"/>
+                <outlet property="voiceBtn" destination="rov-qw-7vE" id="fSR-xS-J5j"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0SY-fD-Qgm">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_head" translatesAutoresizingMaskIntoConstraints="NO" id="sr1-RV-m5N">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="320"/>
+                </imageView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utw-ZM-ewQ">
+                    <rect key="frame" x="33" y="0.0" width="174" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-↓0kbps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnG-2X-DvG">
+                    <rect key="frame" x="0.0" y="288" width="240" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="5dB-f5-6jw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V-↓0kbps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGH-jG-V6m">
+                    <rect key="frame" x="0.0" y="304" width="240" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="wif-hL-l6O"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPH-2T-IQ4">
+                    <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="NUJ-Kr-cHk"/>
+                        <constraint firstAttribute="height" constant="28" id="UoJ-2n-sgm"/>
+                    </constraints>
+                    <state key="normal" image="switch"/>
+                    <connections>
+                        <action selector="switchCamera:" destination="-1" eventType="touchUpInside" id="PZW-m8-T0i"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rov-qw-7vE">
+                    <rect key="frame" x="212" y="0.0" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="Hzw-Dx-alN"/>
+                        <constraint firstAttribute="width" constant="28" id="Jmu-4U-yPu"/>
+                    </constraints>
+                    <state key="normal" image="audio_small"/>
+                    <connections>
+                        <action selector="enableAudioAction:" destination="-1" eventType="touchUpInside" id="MXd-KJ-CTf"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="wPH-2T-IQ4" firstAttribute="leading" secondItem="S0k-gO-HNV" secondAttribute="leading" id="7gX-4W-caV"/>
+                <constraint firstItem="sr1-RV-m5N" firstAttribute="leading" secondItem="0SY-fD-Qgm" secondAttribute="leading" id="8pd-Lf-yiF"/>
+                <constraint firstItem="Utw-ZM-ewQ" firstAttribute="leading" secondItem="wPH-2T-IQ4" secondAttribute="trailing" constant="5" id="905-uv-VIR"/>
+                <constraint firstItem="rov-qw-7vE" firstAttribute="top" secondItem="S0k-gO-HNV" secondAttribute="top" id="KaC-8b-JoT"/>
+                <constraint firstItem="S0k-gO-HNV" firstAttribute="trailing" secondItem="sr1-RV-m5N" secondAttribute="trailing" id="QHt-km-Rlo"/>
+                <constraint firstItem="sr1-RV-m5N" firstAttribute="top" secondItem="S0k-gO-HNV" secondAttribute="top" id="Rcd-nK-k5Y"/>
+                <constraint firstItem="BGH-jG-V6m" firstAttribute="leading" secondItem="S0k-gO-HNV" secondAttribute="leading" id="SmB-x0-TSw"/>
+                <constraint firstItem="S0k-gO-HNV" firstAttribute="trailing" secondItem="Utw-ZM-ewQ" secondAttribute="trailing" constant="33" id="U8C-3G-xQP"/>
+                <constraint firstAttribute="trailing" secondItem="rov-qw-7vE" secondAttribute="trailing" id="YIw-Mv-cUI"/>
+                <constraint firstItem="BGH-jG-V6m" firstAttribute="top" secondItem="RnG-2X-DvG" secondAttribute="bottom" id="biF-2q-6JM"/>
+                <constraint firstItem="RnG-2X-DvG" firstAttribute="leading" secondItem="S0k-gO-HNV" secondAttribute="leading" id="dGu-eG-Dwa"/>
+                <constraint firstItem="Utw-ZM-ewQ" firstAttribute="top" secondItem="S0k-gO-HNV" secondAttribute="top" id="fih-Kh-ozf"/>
+                <constraint firstItem="BGH-jG-V6m" firstAttribute="trailing" secondItem="S0k-gO-HNV" secondAttribute="trailing" id="gB9-CD-WGN"/>
+                <constraint firstAttribute="bottom" secondItem="sr1-RV-m5N" secondAttribute="bottom" id="k9n-Ak-kBR"/>
+                <constraint firstItem="BGH-jG-V6m" firstAttribute="bottom" secondItem="S0k-gO-HNV" secondAttribute="bottom" id="nDu-8w-vN8"/>
+                <constraint firstItem="RnG-2X-DvG" firstAttribute="trailing" secondItem="S0k-gO-HNV" secondAttribute="trailing" id="pSx-hF-dAV"/>
+                <constraint firstItem="wPH-2T-IQ4" firstAttribute="top" secondItem="S0k-gO-HNV" secondAttribute="top" id="sXQ-br-F0o"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="S0k-gO-HNV"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="audio_small" width="37.5" height="37.5"/>
+        <image name="switch" width="35" height="35"/>
+        <image name="video_head" width="120" height="135.5"/>
+    </resources>
+</document>

@@ -1,0 +1,18 @@
+//
+//  TTTLive-Prefix.pch
+//  TTTLive
+//
+//  Created by yanzhen on 2018/8/21.
+//  Copyright © 2018年 yanzhen. All rights reserved.
+//
+
+#ifndef TTTLive_Prefix_pch
+#define TTTLive_Prefix_pch
+
+#import "TTProgressHud.h"
+#import "UIView+Toast.h"
+#import "TTTRtcManager.h"
+
+#define TTManager [TTTRtcManager manager]
+
+#endif /* TTTLive_Prefix_pch */

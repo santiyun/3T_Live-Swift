@@ -1,4 +1,6 @@
-### 连麦直播-Swift
+### 连麦直播
+
+**TTTLive**目录下是Swift代码，**TTTLive-OC**是OC代码
 
 #### 准备工作
 1. 在 https://github.com/santiyun/iOS-LiveSDK 下载连麦直播SDK。 放在**TTTLib**目录下

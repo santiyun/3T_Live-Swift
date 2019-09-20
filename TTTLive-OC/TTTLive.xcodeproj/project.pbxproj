@@ -1,0 +1,516 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B11C5F6212512B9007799F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11C5F5212512B9007799F1 /* AppDelegate.m */; };
+		9B11C5FC212512B9007799F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B11C5FA212512B9007799F1 /* Main.storyboard */; };
+		9B11C5FE212512BA007799F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B11C5FD212512BA007799F1 /* Assets.xcassets */; };
+		9B11C601212512BA007799F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B11C5FF212512BA007799F1 /* LaunchScreen.storyboard */; };
+		9B11C604212512BA007799F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B11C603212512BA007799F1 /* main.m */; };
+		9B53C179212BAF7B00497907 /* TTTRtcManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C178212BAF7B00497907 /* TTTRtcManager.m */; };
+		9B53C17C212BAFA900497907 /* TTTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C17B212BAFA900497907 /* TTTUser.m */; };
+		9B53C17F212BB0E200497907 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53C17E212BB0E200497907 /* libc++.tbd */; };
+		9B53C181212BB0E700497907 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53C180212BB0E700497907 /* libxml2.tbd */; };
+		9B53C185212BB10600497907 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53C184212BB10600497907 /* libz.tbd */; };
+		9B53C187212BB10F00497907 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53C186212BB10F00497907 /* SystemConfiguration.framework */; };
+		9B53C189212BB11800497907 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53C188212BB11800497907 /* CoreTelephony.framework */; };
+		9B53C18B212BB12400497907 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B53C18A212BB12400497907 /* ReplayKit.framework */; };
+		9B53C192212BB1BF00497907 /* TTProgressHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C18E212BB1BF00497907 /* TTProgressHud.m */; };
+		9B53C193212BB1BF00497907 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C191212BB1BF00497907 /* UIView+Toast.m */; };
+		9B53C196212BB23000497907 /* TTTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C195212BB23000497907 /* TTTLoginViewController.m */; };
+		9B53C199212BB23900497907 /* TTTLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C198212BB23900497907 /* TTTLiveViewController.m */; };
+		9B53C19C212BBB9E00497907 /* TTTAVRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C19B212BBB9E00497907 /* TTTAVRegion.m */; };
+		9B53C19E212BBBAC00497907 /* TTTAVRegion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B53C19D212BBBAC00497907 /* TTTAVRegion.xib */; };
+		9B53C1A1212BBEAB00497907 /* TTTVideoPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B53C1A0212BBEAB00497907 /* TTTVideoPosition.m */; };
+		9BCB136C2149FB6900DD0724 /* TTTSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCB136B2149FB6900DD0724 /* TTTSettingViewController.m */; };
+		9BCB136F2149FB7800DD0724 /* TTTSLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCB136E2149FB7800DD0724 /* TTTSLocalViewController.m */; };
+		9BCB13722149FB8700DD0724 /* TTTSCdnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCB13712149FB8700DD0724 /* TTTSCdnViewController.m */; };
+		9BCB1374214A357F00DD0724 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCB1373214A357F00DD0724 /* libsqlite3.tbd */; };
+		9BFAE42821A65CFF005228C6 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFAE42721A65CFF005228C6 /* libiconv.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9B11C5F1212512B9007799F1 /* TTTLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTTLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B11C5F4212512B9007799F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9B11C5F5212512B9007799F1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9B11C5FB212512B9007799F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9B11C5FD212512BA007799F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9B11C600212512BA007799F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9B11C602212512BA007799F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B11C603212512BA007799F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B53C177212BAF7B00497907 /* TTTRtcManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTRtcManager.h; sourceTree = "<group>"; };
+		9B53C178212BAF7B00497907 /* TTTRtcManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTRtcManager.m; sourceTree = "<group>"; };
+		9B53C17A212BAFA900497907 /* TTTUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTUser.h; sourceTree = "<group>"; };
+		9B53C17B212BAFA900497907 /* TTTUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTUser.m; sourceTree = "<group>"; };
+		9B53C17E212BB0E200497907 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		9B53C180212BB0E700497907 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		9B53C184212BB10600497907 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9B53C186212BB10F00497907 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9B53C188212BB11800497907 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		9B53C18A212BB12400497907 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		9B53C18C212BB16200497907 /* TTTLive-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TTTLive-Prefix.pch"; sourceTree = "<group>"; };
+		9B53C18E212BB1BF00497907 /* TTProgressHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTProgressHud.m; sourceTree = "<group>"; };
+		9B53C18F212BB1BF00497907 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		9B53C190212BB1BF00497907 /* TTProgressHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTProgressHud.h; sourceTree = "<group>"; };
+		9B53C191212BB1BF00497907 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		9B53C194212BB23000497907 /* TTTLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTLoginViewController.h; sourceTree = "<group>"; };
+		9B53C195212BB23000497907 /* TTTLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTLoginViewController.m; sourceTree = "<group>"; };
+		9B53C197212BB23900497907 /* TTTLiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTLiveViewController.h; sourceTree = "<group>"; };
+		9B53C198212BB23900497907 /* TTTLiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTLiveViewController.m; sourceTree = "<group>"; };
+		9B53C19A212BBB9E00497907 /* TTTAVRegion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTAVRegion.h; sourceTree = "<group>"; };
+		9B53C19B212BBB9E00497907 /* TTTAVRegion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTAVRegion.m; sourceTree = "<group>"; };
+		9B53C19D212BBBAC00497907 /* TTTAVRegion.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTTAVRegion.xib; sourceTree = "<group>"; };
+		9B53C19F212BBEAB00497907 /* TTTVideoPosition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTVideoPosition.h; sourceTree = "<group>"; };
+		9B53C1A0212BBEAB00497907 /* TTTVideoPosition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTVideoPosition.m; sourceTree = "<group>"; };
+		9BCB136A2149FB6900DD0724 /* TTTSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTSettingViewController.h; sourceTree = "<group>"; };
+		9BCB136B2149FB6900DD0724 /* TTTSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTSettingViewController.m; sourceTree = "<group>"; };
+		9BCB136D2149FB7800DD0724 /* TTTSLocalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTSLocalViewController.h; sourceTree = "<group>"; };
+		9BCB136E2149FB7800DD0724 /* TTTSLocalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTSLocalViewController.m; sourceTree = "<group>"; };
+		9BCB13702149FB8700DD0724 /* TTTSCdnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTTSCdnViewController.h; sourceTree = "<group>"; };
+		9BCB13712149FB8700DD0724 /* TTTSCdnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTTSCdnViewController.m; sourceTree = "<group>"; };
+		9BCB1373214A357F00DD0724 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		9BFAE42721A65CFF005228C6 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B11C5EE212512B9007799F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BFAE42821A65CFF005228C6 /* libiconv.tbd in Frameworks */,
+				9BCB1374214A357F00DD0724 /* libsqlite3.tbd in Frameworks */,
+				9B53C18B212BB12400497907 /* ReplayKit.framework in Frameworks */,
+				9B53C189212BB11800497907 /* CoreTelephony.framework in Frameworks */,
+				9B53C187212BB10F00497907 /* SystemConfiguration.framework in Frameworks */,
+				9B53C185212BB10600497907 /* libz.tbd in Frameworks */,
+				9B53C181212BB0E700497907 /* libxml2.tbd in Frameworks */,
+				9B53C17F212BB0E200497907 /* libc++.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B11C5E8212512B9007799F1 = {
+			isa = PBXGroup;
+			children = (
+				9B11C5F3212512B9007799F1 /* TTTLive */,
+				9B11C5F2212512B9007799F1 /* Products */,
+				9B53C17D212BB0E100497907 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9B11C5F2212512B9007799F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B11C5F1212512B9007799F1 /* TTTLive.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B11C5F3212512B9007799F1 /* TTTLive */ = {
+			isa = PBXGroup;
+			children = (
+				9B11C5F4212512B9007799F1 /* AppDelegate.h */,
+				9B11C5F5212512B9007799F1 /* AppDelegate.m */,
+				9B53C177212BAF7B00497907 /* TTTRtcManager.h */,
+				9B53C178212BAF7B00497907 /* TTTRtcManager.m */,
+				9B53C194212BB23000497907 /* TTTLoginViewController.h */,
+				9B53C195212BB23000497907 /* TTTLoginViewController.m */,
+				9B53C197212BB23900497907 /* TTTLiveViewController.h */,
+				9B53C198212BB23900497907 /* TTTLiveViewController.m */,
+				9B53C17A212BAFA900497907 /* TTTUser.h */,
+				9B53C17B212BAFA900497907 /* TTTUser.m */,
+				9B53C19A212BBB9E00497907 /* TTTAVRegion.h */,
+				9B53C19B212BBB9E00497907 /* TTTAVRegion.m */,
+				9B53C19D212BBBAC00497907 /* TTTAVRegion.xib */,
+				9B53C19F212BBEAB00497907 /* TTTVideoPosition.h */,
+				9B53C1A0212BBEAB00497907 /* TTTVideoPosition.m */,
+				9BCB13692149FB4B00DD0724 /* Settings */,
+				9B11C5FA212512B9007799F1 /* Main.storyboard */,
+				9B11C5FD212512BA007799F1 /* Assets.xcassets */,
+				9B53C18C212BB16200497907 /* TTTLive-Prefix.pch */,
+				9B53C18D212BB1BF00497907 /* TTHelper */,
+				9B11C5FF212512BA007799F1 /* LaunchScreen.storyboard */,
+				9B11C602212512BA007799F1 /* Info.plist */,
+				9B11C603212512BA007799F1 /* main.m */,
+			);
+			path = TTTLive;
+			sourceTree = "<group>";
+		};
+		9B53C17D212BB0E100497907 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BFAE42721A65CFF005228C6 /* libiconv.tbd */,
+				9BCB1373214A357F00DD0724 /* libsqlite3.tbd */,
+				9B53C18A212BB12400497907 /* ReplayKit.framework */,
+				9B53C188212BB11800497907 /* CoreTelephony.framework */,
+				9B53C186212BB10F00497907 /* SystemConfiguration.framework */,
+				9B53C184212BB10600497907 /* libz.tbd */,
+				9B53C180212BB0E700497907 /* libxml2.tbd */,
+				9B53C17E212BB0E200497907 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B53C18D212BB1BF00497907 /* TTHelper */ = {
+			isa = PBXGroup;
+			children = (
+				9B53C18E212BB1BF00497907 /* TTProgressHud.m */,
+				9B53C18F212BB1BF00497907 /* UIView+Toast.h */,
+				9B53C190212BB1BF00497907 /* TTProgressHud.h */,
+				9B53C191212BB1BF00497907 /* UIView+Toast.m */,
+			);
+			path = TTHelper;
+			sourceTree = "<group>";
+		};
+		9BCB13692149FB4B00DD0724 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9BCB136A2149FB6900DD0724 /* TTTSettingViewController.h */,
+				9BCB136B2149FB6900DD0724 /* TTTSettingViewController.m */,
+				9BCB136D2149FB7800DD0724 /* TTTSLocalViewController.h */,
+				9BCB136E2149FB7800DD0724 /* TTTSLocalViewController.m */,
+				9BCB13702149FB8700DD0724 /* TTTSCdnViewController.h */,
+				9BCB13712149FB8700DD0724 /* TTTSCdnViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B11C5F0212512B9007799F1 /* TTTLive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B11C607212512BA007799F1 /* Build configuration list for PBXNativeTarget "TTTLive" */;
+			buildPhases = (
+				9B11C5ED212512B9007799F1 /* Sources */,
+				9B11C5EE212512B9007799F1 /* Frameworks */,
+				9B11C5EF212512B9007799F1 /* Resources */,
+				9B8282EE218BF983002B8AA5 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TTTLive;
+			productName = TTTLive;
+			productReference = 9B11C5F1212512B9007799F1 /* TTTLive.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B11C5E9212512B9007799F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = yanzhen;
+				TargetAttributes = {
+					9B11C5F0212512B9007799F1 = {
+						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 9B11C5EC212512B9007799F1 /* Build configuration list for PBXProject "TTTLive" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9B11C5E8212512B9007799F1;
+			productRefGroup = 9B11C5F2212512B9007799F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B11C5F0212512B9007799F1 /* TTTLive */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B11C5EF212512B9007799F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B11C601212512BA007799F1 /* LaunchScreen.storyboard in Resources */,
+				9B11C5FE212512BA007799F1 /* Assets.xcassets in Resources */,
+				9B11C5FC212512B9007799F1 /* Main.storyboard in Resources */,
+				9B53C19E212BBBAC00497907 /* TTTAVRegion.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B8282EE218BF983002B8AA5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #正式\nBUGLY_APP_ID=\"9852a04b96\"\nBUGLY_APP_KEY=\"d9a974ba-8453-4923-ba9e-ee3b150f3fac\"\nBUNDLE_IDENTIFIER=\"cn.3ttech.TTTLive\"\n\n#测试\n#BUGLY_APP_ID=\"7c73a70032\"\n#BUGLY_APP_KEY=\"f72ce2fb-62a0-4c06-b8cd-ffd8219e5802\"\n#BUNDLE_IDENTIFIER=\"com.3ttech.TTTRtcEngineDemoTest\"\n\n# #\nUPLOAD_DSYM_ONLY=1\n# #\nUPLOAD_DEBUG_SYMBOLS=0\n# #\nUPLOAD_ARCHIVE_ONLY=0\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\n# UPLOAD_DEBUG_SYMBOLS=0\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n# UPLOAD_SIMULATOR_SYMBOLS=0\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\n# UPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\necho \"--------------------------------\"\necho \"${1}\"\necho \"--------------------------------\"\nexit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\nP_APP_ID=\"$1\"\nP_APP_KEY=\"$2\"\nP_APP_BUNDLE_ID=\"$3\"\nP_APP_VERSION=\"$4\"\nP_BSYMBOL_ZIP_FILE=\"$5\"\n\n#\nP_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\nP_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\nP_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n\nDSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\necho \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n\necho \"-----------------------------\"\nSTATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\necho \"-----------------------------\"\n\nUPLOAD_RESULT=\"FAILTURE\"\necho \"Bugly server response: ${STATUS}\"\nif [ ! \"${STATUS}\" ]; then\necho \"Error: Failed to upload the zip archive file.\"\nelif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\necho \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\nUPLOAD_RESULT=\"SUCCESS\"\nelse\necho \"Error: Failed to upload the zip archive file to Bugly.\"\nfi\n\n#Remove temp dSYM archive\n#echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n#/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n\nif [ \"$?\" -ne 0 ]; then\nexitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\nfi\n\necho \"--------------------------------\"\necho \"${UPLOAD_RESULT} - dSYM upload complete.\"\n\nif [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\necho \"--------------------------------\"\necho \"Failed to upload the dSYM\"\necho \"Please check the script and try it again.\"\nfi\n}\n\n# .dSYM解析为bSYMBOL文件\nfunction dSYMParse() {\nDSYM_FILE=\"$1\"\nDSYM_SYMBOL_FILE=\"$2\"\n\necho \"--------------------------------\"\necho \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n(/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\necho \"--------------------------------\"\n\n}\n\n# 执行\nfunction run() {\n\nCONFIG_BUGLY_APP_ID=\"$1\"\nCONFIG_BUGLY_APP_KEY=\"$2\"\n\nCONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\nCONFIG_BUGLY_APP_VERSION=\"$4\"\nCONFIG_DSYM_SOURCE_DIR=\"$5\"\nCONFIG_DSYM_DEST_DIR=\"$6\"\nCONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n\n# 检查必须参数是否设置\nif [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\nexitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\nfi\n\nif [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\nexitWithMessage \"Error: Bugly App ID not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\nexitWithMessage \"Error: Bugly App Key not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\nexitWithMessage \"Error: Bundle Identifier not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\nexitWithMessage \"Error: App Version not defined.\" 0\nfi\n\nif [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\nexitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\nfi\n\nif [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\nexitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\nfi\n\nif [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\nmkdir ${CONFIG_DSYM_DEST_DIR}\nfi\n\nDSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\nIFS=$'\\n'\n\necho \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\nRET=\"F\"\n\n#\nfor dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\nRET=\"T\"\necho \"Found dSYM file: $dsymFile\"\n\nDSYM_FILE_NAME=${dsymFile##*/}\nDSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\nDSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\nDSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n\nif [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\nif [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\nrm -f $DSYM_SYMBOL_ZIP_FILE\nfi\n#需要等待三秒\nsleep 3\n\n# 如果只上传dSYM，直接压缩dSYM目录\nzip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\nelse\n# 使用符号表工具来生成Symbol文件\ndSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\nfi\n\n# 上传\ndSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\ndone\n\nif [ $RET = \"F\" ]; then\nexitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\nfi\n}\n\n# 在Xcode工程中执行\nfunction runInXcode(){\necho \"Uploading dSYM to Bugly in Xcode ...\"\n\necho \"Info.Plist : ${INFOPLIST_FILE}\"\n\nBUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\nBUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n\n# 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\nif [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\nBUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\nelse\nBUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\nfi\n\necho \"--------------------------------\"\necho \"Prepare application information.\"\necho \"--------------------------------\"\n\necho \"Product Name: ${PRODUCT_NAME}\"\necho \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\necho \"Version: ${BUNDLE_SHORT_VERSION}\"\necho \"Build: ${BUNDLE_VERSION}\"\n\necho \"Bugly App ID: ${BUGLY_APP_ID}\"\necho \"Bugly App key: ${BUGLY_APP_KEY}\"\necho \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n\necho \"--------------------------------\"\necho \"Check the arguments ...\"\n\n##检查模拟器编译是否允许上传符号\nif [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\nif [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否是Release模式编译\nif [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\nif [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否Archive操作\nif [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\nif [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\necho \"Archive the package\"\nelse\nexitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\nfi\nfi\n\n#\nrun ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n}\n\n# 根据Xcode的环境变量判断是否处于Xcode环境\nINFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n\nBuildInXcode=\"F\"\nif [ -f \"${INFO_PLIST_FILE}\" ]; then\nBuildInXcode=\"T\"\nfi\n\nif [ $BuildInXcode = \"T\" ]; then\nrunInXcode\nelse\necho \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n# 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\nBUGLY_APP_ID=\"$1\"\nBUGLY_APP_KEY=\"$2\"\nBUNDLE_IDENTIFIER=\"$3\"\nBUGLY_APP_VERSION=\"$4\"\nDWARF_DSYM_FOLDER_PATH=\"$5\"\nSYMBOL_OUTPUT_PATH=\"$6\"\nUPLOAD_DSYM_ONLY=$7\nrun ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B11C5ED212512B9007799F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BCB136F2149FB7800DD0724 /* TTTSLocalViewController.m in Sources */,
+				9B11C604212512BA007799F1 /* main.m in Sources */,
+				9BCB136C2149FB6900DD0724 /* TTTSettingViewController.m in Sources */,
+				9B53C196212BB23000497907 /* TTTLoginViewController.m in Sources */,
+				9B53C17C212BAFA900497907 /* TTTUser.m in Sources */,
+				9B53C179212BAF7B00497907 /* TTTRtcManager.m in Sources */,
+				9B53C193212BB1BF00497907 /* UIView+Toast.m in Sources */,
+				9B53C199212BB23900497907 /* TTTLiveViewController.m in Sources */,
+				9B53C192212BB1BF00497907 /* TTProgressHud.m in Sources */,
+				9B11C5F6212512B9007799F1 /* AppDelegate.m in Sources */,
+				9B53C19C212BBB9E00497907 /* TTTAVRegion.m in Sources */,
+				9B53C1A1212BBEAB00497907 /* TTTVideoPosition.m in Sources */,
+				9BCB13722149FB8700DD0724 /* TTTSCdnViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9B11C5FA212512B9007799F1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B11C5FB212512B9007799F1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9B11C5FF212512BA007799F1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B11C600212512BA007799F1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9B11C605212512BA007799F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9B11C606212512BA007799F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9B11C608212512BA007799F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XP66VHL84;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../TTTLib";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TTTLive/TTTLive-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../TTTLib/WechtSDK";
+				INFOPLIST_FILE = TTTLive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../TTTLib/WechtSDK";
+				OTHER_LDFLAGS = (
+					"-framework",
+					TTTPlayerKit,
+					"-framework",
+					TTTRtcEngineKit,
+					"-lWeChatSDK",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.3ttech.TTTLive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9B11C609212512BA007799F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7XP66VHL84;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../TTTLib";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TTTLive/TTTLive-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../TTTLib/WechtSDK";
+				INFOPLIST_FILE = TTTLive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../TTTLib/WechtSDK";
+				OTHER_LDFLAGS = (
+					"-framework",
+					TTTPlayerKit,
+					"-framework",
+					TTTRtcEngineKit,
+					"-lWeChatSDK",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.3ttech.TTTLive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B11C5EC212512B9007799F1 /* Build configuration list for PBXProject "TTTLive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B11C605212512BA007799F1 /* Debug */,
+				9B11C606212512BA007799F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B11C607212512BA007799F1 /* Build configuration list for PBXNativeTarget "TTTLive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B11C608212512BA007799F1 /* Debug */,
+				9B11C609212512BA007799F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B11C5E9212512B9007799F1 /* Project object */;
+}
